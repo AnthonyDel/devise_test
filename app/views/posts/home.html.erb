@@ -1,0 +1,10 @@
+<h1>Posts#home</h1>
+<p>Find me in app/views/posts/home.html.erb</p>
+
+<% @users.each do |user| %>
+  <h3><%= user.email %></h3>
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Destroy", "/users/#{user.id}", method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+<% end %>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
